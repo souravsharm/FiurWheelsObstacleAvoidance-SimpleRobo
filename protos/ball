@@ -1,0 +1,34 @@
+PROTO Sphere [
+  field SFVec3f    translation  0 0 0
+  field SFRotation rotation     0 1 0 0
+ 
+]
+{
+  DEF ball_2 Solid {
+  translation IS translation
+  rotation IS rotation
+  children [
+    DEF Ball_geometry Shape {
+      appearance PBRAppearance {
+        baseColor 0.6 0.9 1
+        baseColorMap ImageTexture {
+          url [
+            "textures/chessboard.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry Sphere {
+        radius 0.05
+        subdivision 2
+      }
+    }
+  ]
+  name "solid(1)"
+  boundingObject USE Ball_geometry
+  physics Physics {
+  }
+}
+}
+
